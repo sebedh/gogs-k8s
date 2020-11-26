@@ -7,6 +7,13 @@ metadata:
   labels:
     app: postgres
 spec:
+  volumeClaimTemplates:
+    - metadata:
+        name: postgres
+      spec:
+        resources:
+          requests:
+            storage: 5Gi
   serviceName: "postgres"
   replicas: 1
   selector:
@@ -29,10 +36,3 @@ spec:
           volumeMounts:
             - name: postgres
               mountPath: /var/lib/postgresql/data
-      volumeClaimTemplates:
-        - metadata:
-            name: postgres
-          spec:
-            resources:
-              requests:
-                storage: 5Gi
