@@ -16,7 +16,7 @@ spec:
         app: gogs
     spec:
       nodeSelector:
-        - region: west
+        region: west
       containers:
         - name: gogs
           image: sebedh/gogs:0.12.3
