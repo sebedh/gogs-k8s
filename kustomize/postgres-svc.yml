@@ -3,6 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: postgres-service
+  namespace: gogs
   labels:
     app: postgres
 spec:
