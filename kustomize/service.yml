@@ -12,9 +12,9 @@ spec:
   ports:
     - name: ssh
       protocol: TCP
-      port: 10022
+      port: 22
       targetPort: 22
     - name: http
       protocol: TCP
-      port: 10080
+      port: 80
       targetPort: 3000

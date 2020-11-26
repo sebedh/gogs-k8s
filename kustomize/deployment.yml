@@ -19,7 +19,7 @@ spec:
         region: west
       containers:
         - name: gogs
-          image: sebedh/gogs:0.12.3
+          image: gogs/gogs-rpi:0.12.3
           ports:
             - containerPort: 22
               name: ssh
