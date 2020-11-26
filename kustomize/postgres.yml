@@ -29,7 +29,7 @@ spec:
           volumeMounts:
             - name: postgres
               mountPath: /var/lib/postgresql/data
-      volumeClaimTemplate:
+      volumeClaimTemplates:
         - metadata:
             name: postgres
           spec:
