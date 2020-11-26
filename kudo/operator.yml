@@ -1,0 +1,41 @@
+---
+apiVersion: kudo.dev/v1beta1
+name: "gogs-operator"
+operatorVersion: "0.0.1"
+appVersion: "0.12.3"
+kubernetesVersion: 1.19.3+k3s
+maintainers:
+  - name: Sebastian Edholm
+    email: "sebbe@sebb.io"
+url: https://kudo.dev
+tasks:
+  - name: storage
+    kind: Apply
+    spec:
+      resources:
+        - pvc.yml
+  - name: gogs
+    kind: Apply
+    spec:
+      resources:
+        - deployment.yml
+  - name: gogs-service
+    kind: Apply
+    spec:
+      resources:
+        - service.yml
+plan:
+  deploy:
+    strategy: serial
+    phases:
+      - name: dependencies
+        steps:
+          - name: postgres
+            tasks:
+              - postgres
+      - name: main
+        strategy: parallel
+        steps:
+          - name: gogs
+            tasks:
+              - app

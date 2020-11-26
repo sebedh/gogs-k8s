@@ -1,0 +1,33 @@
+---
+# apiVersion: extensions/v1beta1
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gogs
+  namespace: gogs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gogs
+  template:
+    metadata:
+      labels:
+        app: gogs
+    spec:
+      containers:
+        - name: gogs
+          image: sebedh/gogs:0.12.3
+          ports:
+            - containerPort: 22
+              name: ssh
+            - containerPort: 3000
+              name: http
+          env:
+            - name: SOCAT_LINK
+              value: "false"
+          volumeMounts:
+            - name: data
+              mountPath: /data
+      volumes:
+        - name: data

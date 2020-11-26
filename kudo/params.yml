@@ -1,0 +1,6 @@
+---
+apiVersion: kudo.dev/v1beta1
+parameters:
+  - name: replicas
+    description: Number of replicas
+    default: 1
